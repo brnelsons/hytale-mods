@@ -1,10 +1,13 @@
 package com.unnatural.hytale.party;
 
+import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-import com.unnatural.hytale.party.dep.PartyCommand;
+import com.unnatural.hytale.party.plugin.PartyCache;
+import com.unnatural.hytale.party.plugin.PartyCommand;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
+@SuppressWarnings("unused")
 public class PartyPlugin extends JavaPlugin {
 
     private static PartyPlugin INSTANCE;
@@ -20,6 +23,7 @@ public class PartyPlugin extends JavaPlugin {
 
     @Override
     protected void start0() {
-        getCommandRegistry().registerCommand(new PartyCommand());
+        PartyCache cache = new PartyCache();
+        getCommandRegistry().registerCommand(new PartyCommand(cache));
     }
 }
