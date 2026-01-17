@@ -4,20 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mods-party/build.gradle" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/dep/PartyCache.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/dep/PartyCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/dep/PartyStorage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-common/src/main/java/com/briannelsondev/hytale/common/Something.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-common/src/main/java/com/unnatural/hytale/common/Placeholder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-example/src/main/java/org/example/plugin/ExampleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-example/src/main/java/com/unnatural/hytale/example/ExampleCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-example/src/main/java/org/example/plugin/ExamplePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-example/src/main/java/com/unnatural/hytale/example/ExamplePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="got mod working">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,11 +132,24 @@
       <workItem from="1768684245554" duration="2106000" />
       <workItem from="1768686383224" duration="27000" />
       <workItem from="1768686420722" duration="67000" />
-      <workItem from="1768686497288" duration="2536000" />
+      <workItem from="1768686497288" duration="2640000" />
     </task>
+    <task id="LOCAL-00001" summary="got mod working">
+      <option name="closed" value="true" />
+      <created>1768689079887</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1768689079887</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="got mod working" />
+    <option name="LAST_COMMIT_MESSAGE" value="got mod working" />
   </component>
 </project>
