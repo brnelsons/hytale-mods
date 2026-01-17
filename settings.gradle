@@ -4,3 +4,5 @@ include ":common"
 project(":common").projectDir = new File("./mods-common")
 include ":example"
 project(":example").projectDir = new File("./mods-example")
+include ":party"
+project(":party").projectDir = new File("./mods-party")

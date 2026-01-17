@@ -61,7 +61,7 @@ if (!serverRunDir.exists()) {
 // build.properties file. Currently we update the version and if packs are
 // included with the plugin.
 tasks.register('updatePluginManifest') {
-    def manifestFile = file('src/main/resources/manifest.json')
+    def manifestFile = file('mods-party/src/main/resources/manifest.json')
     doLast {
         if (!manifestFile.exists()) {
             throw new GradleException("Could not find manifest.json at ${manifestFile.path}!")
@@ -90,6 +90,7 @@ def createServerRunArguments(String srcDir) {
     if (!modPaths.isEmpty()) {
         programParameters += ' --mods="' + modPaths.join(',') + '"'
     }
+    println programParameters
     return programParameters
 }
 
@@ -98,34 +99,35 @@ def createServerRunArguments(String srcDir) {
 idea.project.settings.runConfigurations {
     'HytaleServer'(org.jetbrains.gradle.ext.Application) {
         mainClass = 'com.hypixel.hytale.Main'
-        moduleName = project.idea.module.name + '.main'
-        programParameters = createServerRunArguments(sourceSets.main.java.srcDirs.first().parentFile.absolutePath)
+        moduleName = project.idea.module.name + '.main' // change run configuration to
+//        programParameters = createServerRunArguments(sourceSets.main.java.srcDirs.first().parentFile.absolutePath)
+        programParameters = createServerRunArguments("C:\\Users\\brnel\\dev\\hytale-mods\\mods-party\\src\\main")
         workingDirectory = serverRunDir.absolutePath
     }
 }
 
 // Creates a launch.json file for VSCode with the same configuration
-tasks.register('generateVSCodeLaunch') {
-    def vscodeDir = file("$projectDir/.vscode")
-    def launchFile = file("$vscodeDir/launch.json")
-    doLast {
-        if (!vscodeDir.exists()) {
-            vscodeDir.mkdirs()
-        }
-        def programParams = createServerRunArguments("\${workspaceFolder}")
-        def launchConfig = [
-                version       : "0.2.0",
-                configurations: [
-                        [
-                                type     : "java",
-                                name     : "HytaleServer",
-                                request  : "launch",
-                                mainClass: "com.hypixel.hytale.Main",
-                                args     : programParams,
-                                cwd      : "\${workspaceFolder}/run"
-                        ]
-                ]
-        ]
-        launchFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(launchConfig))
-    }
-}
+//tasks.register('generateVSCodeLaunch') {
+//    def vscodeDir = file("$projectDir/.vscode")
+//    def launchFile = file("$vscodeDir/launch.json")
+//    doLast {
+//        if (!vscodeDir.exists()) {
+//            vscodeDir.mkdirs()
+//        }
+//        def programParams = createServerRunArguments("\${workspaceFolder}")
+//        def launchConfig = [
+//                version       : "0.2.0",
+//                configurations: [
+//                        [
+//                                type     : "java",
+//                                name     : "HytaleServer",
+//                                request  : "launch",
+//                                mainClass: "com.hypixel.hytale.Main",
+//                                args     : programParams,
+//                                cwd      : "\${workspaceFolder}/run"
+//                        ]
+//                ]
+//        ]
+//        launchFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(launchConfig))
+//    }
+//}
