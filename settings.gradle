@@ -1,1 +1,6 @@
-rootProject.name = 'ExamplePlugin'
+rootProject.name = "__root"
+
+include ":common"
+project(":common").projectDir = new File("./mods-common")
+include ":example"
+project(":example").projectDir = new File("./mods-example")
