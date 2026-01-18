@@ -37,6 +37,10 @@ java {
     toolchain.languageVersion = JavaLanguageVersion.of(java_version)
 }
 
+jar {
+    enabled = false
+}
+
 def createServerRunArguments(String srcDir) {
     def programParameters = '--allow-op --disable-sentry --assets="' + "${hytaleHome}/install/$patchline/package/game/latest/Assets.zip" + '"'
     def modPaths = []
@@ -58,6 +62,10 @@ subprojects {
 
     ext {
         hytaleHome = "$hytaleHome"
+    }
+
+    jar {
+        destinationDirectory = rootProject.layout.buildDirectory.dir("dist")
     }
 
     java {
