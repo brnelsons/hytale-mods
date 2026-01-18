@@ -53,6 +53,10 @@ def createServerRunArguments(String srcDir) {
     return programParameters
 }
 
+tasks.named("jar") {
+    enabled = false
+}
+
 subprojects {
     apply plugin: 'java'
 
@@ -68,6 +72,10 @@ subprojects {
 
     javadoc {
         options.addStringOption('Xdoclint:-missing', '-quiet')
+    }
+
+    jar {
+        destinationDirectory = rootProject.layout.buildDirectory.dir("dist")
     }
 
     // Updates the manifest.json file with the latest properties defined in the
