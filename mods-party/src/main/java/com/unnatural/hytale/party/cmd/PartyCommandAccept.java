@@ -25,6 +25,11 @@ public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
         this.partyService = partyService;
     }
 
+    @Override
+    protected boolean canGeneratePermission() {
+        return false;
+    }
+
     @NonNullDecl
     @Override
     protected CompletableFuture<Void> executeAsync(@NonNullDecl CommandContext commandContext,

@@ -26,6 +26,11 @@ public class PartyCommandInvite extends AbstractAsyncPlayerCommand {
         this.targetPlayerArg = withRequiredArg("targetPlayer", "the username of the player", ArgTypes.STRING);
     }
 
+    @Override
+    protected boolean canGeneratePermission() {
+        return false;
+    }
+
     @NonNullDecl
     @Override
     protected CompletableFuture<Void> executeAsync(@NonNullDecl CommandContext commandContext,

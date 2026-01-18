@@ -1,22 +1,18 @@
 {
-    "Group": "Example",
-    "Name": "ExamplePlugin",
-    "Version": "0.0.2",
-    "Description": "An example plugin for HyTale!",
     "Authors": [
         {
-            "Name": "It's you!"
+          "Name": "Unnatural"
         }
     ],
-    "Website": "example.org",
-    "ServerVersion": "*",
     "Dependencies": {
-        
+      "Hytale:EntityModule": "*"
     },
-    "OptionalDependencies": {
-        
-    },
+  "Description": "Unnaturals Common Plugin",
     "DisabledByDefault": false,
-    "Main": "org.example.plugin.ExamplePlugin",
-    "IncludesAssetPack": true
+  "Group": "Unnatural",
+  "IncludesAssetPack": true,
+  "Main": "com.unnatural.hytale.common.CommonPlugin",
+  "Name": "Common",
+  "ServerVersion": "*",
+  "Version": "0.0.2"
 }
