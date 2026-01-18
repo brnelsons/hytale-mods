@@ -37,10 +37,10 @@ public class PartyCommandInvite extends AbstractAsyncPlayerCommand {
         return CompletableFuture.runAsync(() -> {
             final String sourcePlayer = playerRef.getUsername();
             final String targetPlayer = this.targetPlayerArg.get(commandContext);
-            //            if (targetPlayer.equalsIgnoreCase(sourcePlayer)) {
-            //                playerRef.sendMessage(Message.raw("cannot create party with yourself").color(Color.ORANGE));
-            //                return;
-            //            }
+            if (targetPlayer.equalsIgnoreCase(sourcePlayer)) {
+                playerRef.sendMessage(Messages.warning("cannot create party with yourself"));
+                return;
+            }
             world.getPlayerRefs()
                     .stream()
                     .filter(player -> player.getUsername().equalsIgnoreCase(targetPlayer))

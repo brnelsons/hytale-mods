@@ -39,7 +39,7 @@ public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
                 partyService.acceptInvite(playerRef);
                 playerRef.sendMessage(Messages.important("joined party"));
                 Set<UUID> playerUuids = partyService.getPlayersInPartyWith(playerRef)
-                        //                        .filter(p -> !p.equals(playerRef.getUuid()))
+                        .filter(p -> !p.equals(playerRef.getUuid()))
                         .collect(Collectors.toSet());
                 world.getPlayerRefs()
                         .stream()

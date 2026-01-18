@@ -35,7 +35,7 @@ public class PartyCommandLeave extends AbstractAsyncPlayerCommand {
         return CompletableFuture.runAsync(() -> {
             if (partyService.isInParty(playerRef)) {
                 Set<UUID> players = partyService.getPlayersInPartyWith(playerRef)
-                        //                        .filter(p -> p.equals(playerRef.getUuid()))
+                        .filter(p -> p.equals(playerRef.getUuid()))
                         .collect(Collectors.toSet());
                 partyService.leave(playerRef);
                 commandContext.sendMessage(Messages.important("left party"));
