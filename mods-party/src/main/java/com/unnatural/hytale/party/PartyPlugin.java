@@ -26,5 +26,8 @@ public class PartyPlugin extends JavaPlugin {
     protected void start0() {
         PartyService partyService = new PartyServiceImpl(InMemoryStore.create());
         getCommandRegistry().registerCommand(new PartyCommand(partyService));
+        // TODO register when a player disconnects or connects to manage the party. otherwise there will be memory leaks.
     }
+
+
 }

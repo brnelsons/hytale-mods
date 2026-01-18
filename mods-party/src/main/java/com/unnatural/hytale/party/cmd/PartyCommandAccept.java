@@ -44,7 +44,7 @@ public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
                 world.getPlayerRefs()
                         .stream()
                         .filter(player -> playerUuids.contains(player.getUuid()))
-                        .forEach(playerInParty -> playerInParty.sendMessage(Messages.important("player has joined the party: " + playerRef.getUsername())));
+                        .forEach(playerInParty -> playerInParty.sendMessage(Messages.important(playerRef.getUsername() + " has joined the party: ")));
             }
 
         }, world);
