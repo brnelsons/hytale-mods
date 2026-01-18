@@ -1,4 +1,4 @@
-rootProject.name = "__root"
+rootProject.name = "HytaleMods"
 
 include ":common"
 project(":common").projectDir = new File("./mods-common")

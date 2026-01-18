@@ -31,6 +31,11 @@ public class PartyServiceImpl implements PartyService {
     }
 
     @Override
+    public boolean isInParty(PlayerRef playerRef) {
+        return store.values().anyMatch(party -> party.hasPlayer(playerRef));
+    }
+
+    @Override
     public void join(PlayerRef playerRef, String playerName) {
         // TODO check if invite exists
         // join party and remove invite

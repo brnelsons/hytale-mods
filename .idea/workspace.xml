@@ -4,27 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="added test HUD element">
-      <change afterPath="$PROJECT_DIR$/mods-common/src/main/java/com/unnatural/hytale/common/storage/InMemoryStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-common/src/main/java/com/unnatural/hytale/common/storage/Store.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/TASKS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommandCreate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommandLeave.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/model/PartyContainer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyServiceImpl.java" afterDir="false" />
+    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="updated plugin to manage party">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/HytaleServer__Party_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/HytaleServer__Party_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/hud/PartyHud.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/model/Party.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCache.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/test.ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommandCreate.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommandInvite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +58,13 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="jar://$USER_HOME$/AppData/Roaming/Hytale/install/release/package/game/latest/Server/HytaleServer.jar!/com/hypixel/hytale/protocol/GameMode.class" root0="SKIP_INSPECTION" />
   </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -81,9 +78,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.HytaleServer (Party).executor": "Debug",
     "Gradle.Build hytale-mods.executor": "Run",
     "Gradle.hytale-mods [:com.hypixel.hytale.Main.main()].executor": "Debug",
-    "Gradle.hytale-mods [:party:com.hypixel.hytale.Main.main()].executor": "Run",
+    "Gradle.hytale-mods [:party:com.hypixel.hytale.Main.main()].executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -103,6 +101,7 @@
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.445977",
+    "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.sourceCode.JAVA",
     "vue.rearranger.settings.migration": "true"
   }
@@ -128,7 +127,7 @@
   <component name="RunManager" selected="Application.HytaleServer (Party)">
     <configuration name="HytaleServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.hypixel.hytale.Main" />
-      <module name="__root.main" />
+      <module name="HytaleMods.main" />
       <option name="PROGRAM_PARAMETERS" value="--allow-op --disable-sentry --assets=&quot;C:\Users\brnel/AppData/Roaming/Hytale/install/release/package/game/latest/Assets.zip&quot; --mods=&quot;C:\Users\brnel\dev\hytale-mods\mods-party\src\main&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
       <method v="2">
@@ -160,7 +159,8 @@
       <workItem from="1768684245554" duration="2106000" />
       <workItem from="1768686383224" duration="27000" />
       <workItem from="1768686420722" duration="67000" />
-      <workItem from="1768686497288" duration="14898000" />
+      <workItem from="1768686497288" duration="15648000" />
+      <workItem from="1768719328556" duration="2397000" />
     </task>
     <task id="LOCAL-00001" summary="got mod working">
       <option name="closed" value="true" />
@@ -194,7 +194,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768694912067</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="updated plugin to manage party">
+      <option name="closed" value="true" />
+      <created>1768712714665</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1768712714665</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +215,8 @@
     <MESSAGE value="got mod working" />
     <MESSAGE value="added party stuff" />
     <MESSAGE value="added test HUD element" />
-    <option name="LAST_COMMIT_MESSAGE" value="added test HUD element" />
+    <MESSAGE value="updated plugin to manage party" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated plugin to manage party" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

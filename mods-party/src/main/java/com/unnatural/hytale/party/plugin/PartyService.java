@@ -8,6 +8,8 @@ public interface PartyService {
 
     void invite(PlayerRef playerRef, String playerName);
 
+    boolean isInParty(PlayerRef playerRef);
+
     void join(PlayerRef playerRef, String playerName);
 
     void leave(PlayerRef playerRef);

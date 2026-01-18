@@ -14,7 +14,7 @@ public class PartyCommand extends CommandBase {
 
     public PartyCommand(PartyService partyService) {
         super("party", "Manages party");
-        addSubCommand(new PartyCommandCreate(partyService));
+        addSubCommand(new PartyCommandInvite(partyService));
         addSubCommand(new PartyCommandLeave(partyService));
     }
 
