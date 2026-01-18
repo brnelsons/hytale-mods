@@ -1,16 +1,20 @@
 package com.unnatural.hytale.party.plugin;
 
 import com.hypixel.hytale.server.core.universe.PlayerRef;
-import com.unnatural.hytale.party.model.Party;
+
+import java.util.UUID;
+import java.util.stream.Stream;
 
 public interface PartyService {
-    Party create(PlayerRef playerRef);
+    void createInvite(PlayerRef sourcePlayer, PlayerRef targetPlayer);
 
-    void invite(PlayerRef playerRef, String playerName);
+    void acceptInvite(PlayerRef targetPlayer);
+
+    boolean hasInvite(PlayerRef targetPlayer);
 
     boolean isInParty(PlayerRef playerRef);
 
-    void join(PlayerRef playerRef, String playerName);
+    Stream<UUID> getPlayersInPartyWith(PlayerRef playerRef);
 
     void leave(PlayerRef playerRef);
 }

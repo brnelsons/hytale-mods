@@ -2,7 +2,6 @@ package com.unnatural.hytale.party.cmd;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
@@ -10,10 +9,10 @@ import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncP
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.unnatural.hytale.common.util.Messages;
 import com.unnatural.hytale.party.plugin.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
-import java.awt.Color;
 import java.util.concurrent.CompletableFuture;
 
 public class PartyCommandInvite extends AbstractAsyncPlayerCommand {
@@ -34,19 +33,28 @@ public class PartyCommandInvite extends AbstractAsyncPlayerCommand {
                                                    @NonNullDecl Ref<EntityStore> ref,
                                                    @NonNullDecl PlayerRef playerRef,
                                                    @NonNullDecl World world) {
-        // TODO should all of this be inside the completable future?
-        String targetPlayer = this.targetPlayerArg.get(commandContext);
-        return CompletableFuture.runAsync(() -> world.getPlayerRefs()
-                .stream()
-                .filter(allPlayers -> allPlayers.getUsername().equalsIgnoreCase(targetPlayer))
-                .findFirst()
-                .ifPresentOrElse(target -> {
-                    if (target.equals(playerRef)) {
-                        commandContext.sendMessage(Message.raw("cannot create party with yourself").color(Color.ORANGE));
-                    } else {
-                        partyService.create(playerRef);
-                        commandContext.sendMessage(Message.raw("Created party").color(Color.GREEN));
-                    }
-                }, () -> commandContext.sendMessage(Message.raw(String.format("player \"%s\" not found", targetPlayer)).color(Color.ORANGE))), world);
+
+        return CompletableFuture.runAsync(() -> {
+            final String sourcePlayer = playerRef.getUsername();
+            final String targetPlayer = this.targetPlayerArg.get(commandContext);
+            //            if (targetPlayer.equalsIgnoreCase(sourcePlayer)) {
+            //                playerRef.sendMessage(Message.raw("cannot create party with yourself").color(Color.ORANGE));
+            //                return;
+            //            }
+            world.getPlayerRefs()
+                    .stream()
+                    .filter(player -> player.getUsername().equalsIgnoreCase(targetPlayer))
+                    .findFirst()
+                    .ifPresentOrElse(target -> {
+                        // TODO target player has pending invite
+                        if (partyService.isInParty(target)) {
+                            target.sendMessage(Messages.warning("player is in another party"));
+                        } else {
+                            partyService.createInvite(playerRef, target);
+                            target.sendMessage(Messages.important("Party invite from " + sourcePlayer));
+                            playerRef.sendMessage(Messages.important("Sent invite to " + targetPlayer));
+                        }
+                    }, () -> playerRef.sendMessage(Messages.error("player not found: " + targetPlayer)));
+        }, world);
     }
 }
