@@ -1,21 +1,19 @@
 {
-    "Authors": [
-        {
-            "Name": "brnelsons"
-        }
-    ],
-    "Dependencies": {
-        "Hytale:EntityModule": "*"
-    },
-    "Description": "Unnaturals Party Plugin",
-    "DisabledByDefault": false,
-    "Group": "com.unnatural",
-    "IncludesAssetPack": true,
-    "Main": "com.unnatural.hytale.party.PartyPlugin",
-    "Name": "UnnaturalParty",
-    "OptionalDependencies": {
-        
-    },
-    "ServerVersion": "*",
-    "Version": "0.0.2"
+  "Authors": [
+    {
+      "Name": "brnelsons"
+    }
+  ],
+  "Dependencies": {
+    "Hytale:EntityModule": "*"
+  },
+  "Description": "Unnaturals Party Plugin",
+  "DisabledByDefault": false,
+  "Group": "com.unnatural",
+  "IncludesAssetPack": true,
+  "Main": "com.unnatural.hytale.party.PartyPlugin",
+  "Name": "UnnaturalParty",
+  "ServerVersion": "*",
+  "Version": "0.0.1",
+  "includesAssetPack": true
 }

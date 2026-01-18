@@ -4,15 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="got mod working">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/Party.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" afterDir="false" />
+    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="added party stuff">
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/hud/PartyHud.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/green.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/test.ui" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/placeholder.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/dep/PartyCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/dep/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/dep/PartyStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +62,6 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -90,7 +88,7 @@
     "project.structure.last.edited": "Problems",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.445977",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -140,7 +138,7 @@
       <workItem from="1768684245554" duration="2106000" />
       <workItem from="1768686383224" duration="27000" />
       <workItem from="1768686420722" duration="67000" />
-      <workItem from="1768686497288" duration="5795000" />
+      <workItem from="1768686497288" duration="8251000" />
     </task>
     <task id="LOCAL-00001" summary="got mod working">
       <option name="closed" value="true" />
@@ -158,15 +156,27 @@
       <option name="project" value="LOCAL" />
       <updated>1768689205541</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added party stuff">
+      <option name="closed" value="true" />
+      <created>1768692360524</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1768692360524</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.ui" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="got mod working" />
-    <option name="LAST_COMMIT_MESSAGE" value="got mod working" />
+    <MESSAGE value="added party stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="added party stuff" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

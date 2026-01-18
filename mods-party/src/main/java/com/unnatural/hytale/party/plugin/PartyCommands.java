@@ -5,9 +5,11 @@ import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncPlayerCommand;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.unnatural.hytale.party.hud.PartyHud;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
 import java.awt.*;
@@ -17,6 +19,7 @@ import java.util.concurrent.CompletableFuture;
 @SuppressWarnings("unused")
 public class PartyCommands {
     static final Message CREATE_PARTY_MSG = Message.raw("Created party").color(Color.GREEN);
+
     public static class Create extends AbstractAsyncPlayerCommand {
 
         private final PartyCache partyCache;
@@ -33,13 +36,14 @@ public class PartyCommands {
                                                        @NonNullDecl Ref<EntityStore> ref,
                                                        @NonNullDecl PlayerRef playerRef,
                                                        @NonNullDecl World world) {
-            world.execute(() -> {
+            Player player = commandContext.senderAs(Player.class);
+            return CompletableFuture.runAsync(() -> {
                 Party party = new Party(UUID.randomUUID());
                 party.setOwner(playerRef);
                 party.addPlayer(playerRef);
                 commandContext.sendMessage(CREATE_PARTY_MSG);
-            });
-            return CompletableFuture.completedFuture(null);
+                player.getHudManager().setCustomHud(playerRef, new PartyHud(playerRef));
+            }, world);
         }
     }
 }
