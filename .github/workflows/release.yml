@@ -20,7 +20,9 @@ jobs:
           cache: 'gradle'
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: |
+          chmod +x gradlew
+          ./gradlew build
 
       - name: Upload Release Assets
         uses: softprops/action-gh-release@v1
