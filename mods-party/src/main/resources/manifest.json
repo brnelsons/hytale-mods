@@ -1,7 +1,7 @@
 {
   "Authors": [
     {
-      "Name": "brnelsons"
+      "Name": "Unnatural"
     }
   ],
   "Dependencies": {
@@ -15,5 +15,4 @@
   "Name": "UnnaturalParty",
   "ServerVersion": "*",
   "Version": "0.0.1",
-  "includesAssetPack": true
 }

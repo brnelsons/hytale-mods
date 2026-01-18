@@ -1,0 +1,16 @@
+## Tasks
+- [ ] Add features to manage party
+  - [ ] invite {player}
+    - creates a new party if one does not exist
+    - [ ] update this to prompt the user to join the party with a HUD element
+  - [ ] join {player}
+    - joins a players existing party
+  - [ ] disband
+    - removes everyone from the party and remove it
+    - only available for the owner of the party
+  - [ ] leave
+    - should remove the existing current player from the party
+  - [ ] list
+    - should list all players in party and their current health and distance from the player
+    - tmp feature
+- [ ] Create HUD elements

@@ -4,13 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="added party stuff">
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/hud/PartyHud.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/green.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/test.ui" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/placeholder.txt" afterDir="false" />
+    <list default="true" id="f610f7c5-6b83-45bf-8669-a744d5194e09" name="Changes" comment="added test HUD element">
+      <change afterPath="$PROJECT_DIR$/mods-common/src/main/java/com/unnatural/hytale/common/storage/InMemoryStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-common/src/main/java/com/unnatural/hytale/common/storage/Store.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/TASKS.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommandCreate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommandLeave.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/model/PartyContainer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/PartyPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/hud/PartyHud.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/Party.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/model/Party.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCache.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/cmd/PartyCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyCommands.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/java/com/unnatural/hytale/party/plugin/PartyService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/green.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/Common/UI/Custom/Party/test.ui" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/mods-party/src/main/resources/manifest.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,6 +57,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -62,13 +76,14 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Gradle.Build hytale-mods.executor": "Run",
     "Gradle.hytale-mods [:com.hypixel.hytale.Main.main()].executor": "Debug",
-    "Gradle.hytale-mods [:party:com.hypixel.hytale.Main.main()].executor": "Debug",
+    "Gradle.hytale-mods [:party:com.hypixel.hytale.Main.main()].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -98,15 +113,22 @@
       <recent name="C:\Users\brnel\dev\hytale-mods\example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\brnel\dev\hytale-mods\mods-party\src\main\java\com\unnatural\hytale\party" />
       <recent name="C:\Users\brnel\dev\hytale-mods\example\src" />
       <recent name="C:\Users\brnel\dev\hytale-mods\common\src" />
       <recent name="C:\Users\brnel\dev\hytale-mods\example" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.unnatural.hytale.party.data.store" />
+    </key>
+    <key name="MoveInnerDialog.RECENTS_KEY">
+      <recent name="com.unnatural.hytale.party.plugin.cmd" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HytaleServer (Party)">
     <configuration name="HytaleServer" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="com.hypixel.hytale.Main" />
-      <module name="__root.party.main" />
+      <module name="__root.main" />
       <option name="PROGRAM_PARAMETERS" value="--allow-op --disable-sentry --assets=&quot;C:\Users\brnel/AppData/Roaming/Hytale/install/release/package/game/latest/Assets.zip&quot; --mods=&quot;C:\Users\brnel\dev\hytale-mods\mods-party\src\main&quot;" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/run" />
       <method v="2">
@@ -138,7 +160,7 @@
       <workItem from="1768684245554" duration="2106000" />
       <workItem from="1768686383224" duration="27000" />
       <workItem from="1768686420722" duration="67000" />
-      <workItem from="1768686497288" duration="8251000" />
+      <workItem from="1768686497288" duration="14898000" />
     </task>
     <task id="LOCAL-00001" summary="got mod working">
       <option name="closed" value="true" />
@@ -164,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768692360524</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added test HUD element">
+      <option name="closed" value="true" />
+      <created>1768694912067</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1768694912067</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,7 +206,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="got mod working" />
     <MESSAGE value="added party stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="added party stuff" />
+    <MESSAGE value="added test HUD element" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test HUD element" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
