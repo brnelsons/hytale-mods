@@ -9,7 +9,7 @@
     },
     "Description": "Unnaturals Party Plugin",
     "DisabledByDefault": false,
-    "Group": "com.unnatural",
+  "Group": "com.unnatural.hytale.party",
     "IncludesAssetPack": true,
     "Main": "com.unnatural.hytale.party.PartyPlugin",
     "Name": "UnnaturalParty",

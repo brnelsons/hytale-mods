@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/mods-common" />
-            <option value="$PROJECT_DIR$/mods-example" />
             <option value="$PROJECT_DIR$/mods-party" />
           </set>
         </option>

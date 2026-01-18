@@ -1,0 +1,2 @@
+- [ ] Update README.md
+- [ ] create github actions for build and deploy to CurseForge or just keep everything in github?
