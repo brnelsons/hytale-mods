@@ -78,6 +78,12 @@ subprojects {
         options.addStringOption('Xdoclint:-missing', '-quiet')
     }
 
+    dependencies {
+        implementation(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
+//        sourcesJar = files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer-sources.jar")
+//        sources(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer-sources.jar"))
+    }
+
     // Updates the manifest.json file with the latest properties defined in the
     // build.properties file. Currently we update the version and if packs are
     // included with the plugin.
