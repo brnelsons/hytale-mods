@@ -6,5 +6,9 @@ plugins {
 // compile against their code. This requires you to have Hytale installed using
 // the official launcher for now.
 dependencies {
-    implementation(project(":common"))
+//    implementation(project(":generation"))
+    implementation project(":common")
+
+    compileOnly project(":code-gen")
+    annotationProcessor project(":code-gen")
 }

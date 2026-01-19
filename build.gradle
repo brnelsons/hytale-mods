@@ -80,8 +80,6 @@ subprojects {
 
     dependencies {
         implementation(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
-//        sourcesJar = files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer-sources.jar")
-//        sources(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer-sources.jar"))
     }
 
     // Updates the manifest.json file with the latest properties defined in the
@@ -91,7 +89,9 @@ subprojects {
         def manifestFile = file(getProjectDir().absolutePath + '/src/main/resources/manifest.json')
         doLast {
             if (!manifestFile.exists()) {
-                throw new GradleException("Could not find manifest.json at ${manifestFile.path}!")
+//                throw new GradleException("Could not find manifest.json at ${manifestFile.path}!")
+                logger.info("Could not find manifest.json at ${manifestFile.path}!")
+                return
             }
             def manifestJson = new groovy.json.JsonSlurper().parseText(manifestFile.text)
             manifestJson.Version = version
