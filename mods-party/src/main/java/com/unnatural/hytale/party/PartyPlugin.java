@@ -3,7 +3,6 @@ package com.unnatural.hytale.party;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.unnatural.hytale.common.storage.InMemoryStore;
-import com.unnatural.hytale.party.cmd.HelloWorldCommand;
 import com.unnatural.hytale.party.cmd.PartyCommand;
 import com.unnatural.hytale.party.plugin.PartyService;
 import com.unnatural.hytale.party.plugin.PartyServiceImpl;
@@ -28,7 +27,6 @@ public class PartyPlugin extends JavaPlugin {
         //        super.start0();
         PartyService partyService = new PartyServiceImpl(InMemoryStore.create());
         getCommandRegistry().registerCommand(new PartyCommand(partyService));
-        getCommandRegistry().registerCommand(new HelloWorldCommand());
         // TODO register when a player disconnects or connects to manage the party. otherwise there will be memory leaks.
     }
 

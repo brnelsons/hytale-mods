@@ -2,22 +2,17 @@ package com.unnatural.hytale.party.cmd;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
-import com.hypixel.hytale.server.core.Message;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
-import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncPlayerCommand;
+import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
+import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
+import com.unnatural.hytale.party.hud.PartyPage;
 import com.unnatural.hytale.party.plugin.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
-import java.awt.Color;
-import java.util.Set;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-import java.util.stream.Collectors;
-
-public class PartyCommand extends AbstractAsyncPlayerCommand {
+public class PartyCommand extends AbstractPlayerCommand {
 
     private final PartyService partyService;
 
@@ -34,20 +29,16 @@ public class PartyCommand extends AbstractAsyncPlayerCommand {
         return false;
     }
 
-    @NonNullDecl
     @Override
-    protected CompletableFuture<Void> executeAsync(@NonNullDecl CommandContext commandContext,
-                                                   @NonNullDecl Store<EntityStore> store,
-                                                   @NonNullDecl Ref<EntityStore> ref,
-                                                   @NonNullDecl PlayerRef playerRef,
-                                                   @NonNullDecl World world) {
-        return CompletableFuture.runAsync(() -> {
-            playerRef.sendMessage(Message.raw("-- Party").color(Color.YELLOW));
-            if (partyService.isInParty(playerRef)) {
-                Set<UUID> playersInParty = partyService.getPlayersInPartyWith(playerRef).collect(Collectors.toSet());
-                world.getPlayerRefs().stream().filter(p -> playersInParty.contains(p.getUuid()))
-                        .forEach(player -> playerRef.sendMessage(Message.raw("\t*\t" + player.getUsername())));
-            }
-        });
+    protected void execute(@NonNullDecl CommandContext cmd,
+                           @NonNullDecl Store<EntityStore> store,
+                           @NonNullDecl Ref<EntityStore> ref,
+                           @NonNullDecl PlayerRef playerRef,
+                           @NonNullDecl World world) {
+        Player player = store.getComponent(ref, Player.getComponentType());
+        PartyPage page = new PartyPage(playerRef, partyService);
+        if (player != null) {
+            player.getPageManager().openCustomPage(ref, store, page);
+        }
     }
 }
