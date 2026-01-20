@@ -24,7 +24,7 @@ import java.util.Set;
 })
 @SupportedSourceVersion(SourceVersion.RELEASE_25)
 @AutoService(Processor.class)
-public class UiTemplateAnnotationProcessor extends AbstractProcessor {
+public class CustomTemplateProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(CustomTemplate.class)) {
@@ -34,10 +34,12 @@ public class UiTemplateAnnotationProcessor extends AbstractProcessor {
             if (templateValue == null) {
                 return true;
             }
+            // TODO default to FQCN?
             String targetFileName = customTemplateDef.target();
-            if (targetFileName == null) {
-                return true;
+            if (targetFileName.equalsIgnoreCase("")) {
+                targetFileName = element.getSimpleName().toString();
             }
+            targetFileName = String.format("%s/%s.%s", customTemplateDef.type().getBaseLocation(), targetFileName, customTemplateDef.type().getExtension());
             // Use processingEnv.getFiler() to create new source files
             try {
                 FileObject resource = processingEnv.getFiler().createResource(
