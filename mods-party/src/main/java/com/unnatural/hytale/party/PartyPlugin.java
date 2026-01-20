@@ -3,8 +3,10 @@ package com.unnatural.hytale.party;
 import com.hypixel.hytale.server.core.event.events.player.PlayerDisconnectEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
+import com.hypixel.hytale.server.core.universe.world.events.AddWorldEvent;
 import com.unnatural.hytale.common.storage.InMemoryStore;
 import com.unnatural.hytale.party.cmd.PartyCommand;
+import com.unnatural.hytale.party.gui.PartyCompassMarkerProvider;
 import com.unnatural.hytale.party.service.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
@@ -30,6 +32,12 @@ public class PartyPlugin extends JavaPlugin {
         getEventRegistry().register(PlayerDisconnectEvent.class, playerDisconnectEvent -> {
             partyService.leave(playerDisconnectEvent.getPlayerRef());
         });
+        getEventRegistry().registerGlobal(AddWorldEvent.class, event -> onAddWorld(event, partyService));
+    }
+
+    private void onAddWorld(AddWorldEvent event,
+                            PartyService partyService) {
+        event.getWorld().getWorldMapManager().addMarkerProvider("party", new PartyCompassMarkerProvider(partyService));
     }
 
 

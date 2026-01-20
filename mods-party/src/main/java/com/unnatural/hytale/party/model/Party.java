@@ -43,6 +43,5 @@ public class Party {
 
     public List<UUID> getMembers() {
         return List.copyOf(this.members);
-
     }
 }
