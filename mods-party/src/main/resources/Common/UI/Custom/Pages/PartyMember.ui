@@ -1,0 +1,17 @@
+Group {
+  Background: #1a1a2e(0.95);
+  LayoutMode: Left;
+  Padding: (Full: 10);
+  Label #Leader {
+    Text: "Leader";
+    Anchor: (Height: 40);
+    Style: (FontSize: 16, TextColor: #0000ff, Alignment: Center);
+    Visible: false;
+  }
+  Label #Name {
+    Text: "Party Member";
+    Anchor: (Height: 40);
+    Style: (FontSize: 16, TextColor: #ffffff, Alignment: Center);
+    Visible: false;
+  }
+}

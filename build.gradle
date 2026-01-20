@@ -111,9 +111,9 @@ subprojects {
     }
 
     // Makes sure the plugin manifest is up to date.
-    tasks.named('processResources') {
-        dependsOn 'updatePluginManifest'
-    }
+//    tasks.named('processResources') {
+//        dependsOn 'updatePluginManifest'
+//    }
 
     idea.project.settings.runConfigurations {
         "HytaleServer-${project.name}"(org.jetbrains.gradle.ext.Application) {

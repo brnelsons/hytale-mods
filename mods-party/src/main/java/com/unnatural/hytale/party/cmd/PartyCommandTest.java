@@ -7,18 +7,19 @@ import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncP
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.unnatural.hytale.common.util.Messages;
+import com.unnatural.hytale.party.model.Party;
 import com.unnatural.hytale.party.plugin.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
+import java.util.HashSet;
 import java.util.concurrent.CompletableFuture;
 
-public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
+public class PartyCommandTest extends AbstractAsyncPlayerCommand {
 
     private final PartyService partyService;
 
-    public PartyCommandAccept(PartyService partyService) {
-        super("accept", "accepts an available party invite");
+    public PartyCommandTest(PartyService partyService) {
+        super("test", "creates a test party");
         this.partyService = partyService;
     }
 
@@ -35,15 +36,9 @@ public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
                                                    @NonNullDecl PlayerRef playerRef,
                                                    @NonNullDecl World world) {
         return CompletableFuture.runAsync(() -> {
-            if (!partyService.hasInvite(playerRef)) {
-                playerRef.sendMessage(Messages.warning("no party invite available"));
-            } else {
-                partyService.acceptInvite(playerRef);
-                playerRef.sendMessage(Messages.important("joined party"));
-                partyService.getPartyMembersFor(playerRef)
-                        .forEach(playerInParty -> playerInParty.sendMessage(Messages.important(playerRef.getUsername() + " has joined the party: ")));
-            }
-
+            HashSet<PlayerRef> members = new HashSet<>(1);
+            members.add(playerRef);
+            partyService.createParty(new Party(playerRef, members));
         }, world);
     }
 }

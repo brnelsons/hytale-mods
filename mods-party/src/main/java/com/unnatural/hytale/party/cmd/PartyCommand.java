@@ -19,6 +19,7 @@ public class PartyCommand extends AbstractPlayerCommand {
     public PartyCommand(PartyService partyService) {
         super("party", "Manages party");
         this.partyService = partyService;
+        addSubCommand(new PartyCommandTest(partyService));
         addSubCommand(new PartyCommandInvite(partyService));
         addSubCommand(new PartyCommandLeave(partyService));
         addSubCommand(new PartyCommandAccept(partyService));

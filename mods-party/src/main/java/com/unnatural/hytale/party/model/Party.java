@@ -1,40 +1,35 @@
 package com.unnatural.hytale.party.model;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.UUID;
-import java.util.stream.Stream;
+import com.hypixel.hytale.server.core.universe.PlayerRef;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+import java.util.Set;
+
+@Data
+@RequiredArgsConstructor
 public class Party {
     /**
      * PlayerRef#uuid that created the party
      */
-    private final UUID leaderUuid;
-    private final Set<UUID> playerUuids;
+    private final PlayerRef leader;
+    private final Set<PlayerRef> members;
 
-    public Party(UUID leaderUuid) {
-        this.leaderUuid = leaderUuid;
-        this.playerUuids = new HashSet<>();
+    public void addPlayer(PlayerRef member) {
+        members.add(member);
     }
 
-    public UUID getLeaderUuid() {
-        return this.leaderUuid;
+    public void removePlayer(PlayerRef member) {
+        members.remove(member);
     }
 
-    public void addPlayer(UUID playerUuid) {
-        playerUuids.add(playerUuid);
+    public boolean hasPlayer(PlayerRef member) {
+        return members.contains(member);
     }
 
-    public void removePlayer(UUID playerUuid) {
-        playerUuids.remove(playerUuid);
-    }
-
-    public boolean hasPlayer(UUID playerUuid) {
-        return playerUuids.contains(playerUuid);
-    }
-
-    public Stream<UUID> getPlayerUuids() {
-        return this.playerUuids.stream();
+    public List<PlayerRef> getMembers() {
+        return List.copyOf(this.members);
 
     }
 }

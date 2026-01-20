@@ -12,7 +12,6 @@ import com.unnatural.hytale.party.plugin.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
 import java.util.Set;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
@@ -39,15 +38,10 @@ public class PartyCommandLeave extends AbstractAsyncPlayerCommand {
                                                    @NonNullDecl World world) {
         return CompletableFuture.runAsync(() -> {
             if (partyService.isInParty(playerRef)) {
-                Set<UUID> players = partyService.getPlayersInPartyWith(playerRef)
-                        .filter(p -> p.equals(playerRef.getUuid()))
-                        .collect(Collectors.toSet());
+                Set<PlayerRef> members = partyService.getPartyMembersFor(playerRef).collect(Collectors.toSet());
                 partyService.leave(playerRef);
                 commandContext.sendMessage(Messages.important("left party"));
-                world.getPlayerRefs()
-                        .stream()
-                        .filter(p -> players.contains(p.getUuid()))
-                        .forEach(otherPlayer -> otherPlayer.sendMessage(Messages.important(playerRef.getUsername() + " has left the party")));
+                members.forEach(member -> member.sendMessage(Messages.important(playerRef.getUsername() + " has left the party")));
             }
         }, world);
     }
