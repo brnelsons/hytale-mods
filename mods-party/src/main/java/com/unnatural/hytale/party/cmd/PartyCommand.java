@@ -8,7 +8,7 @@ import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.unnatural.hytale.party.hud.PartyPage;
+import com.unnatural.hytale.party.hud.PartyHud;
 import com.unnatural.hytale.party.service.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
@@ -37,9 +37,14 @@ public class PartyCommand extends AbstractPlayerCommand {
                            @NonNullDecl PlayerRef playerRef,
                            @NonNullDecl World world) {
         Player player = store.getComponent(ref, Player.getComponentType());
-        PartyPage page = new PartyPage(playerRef, partyService);
         if (player != null) {
-            player.getPageManager().openCustomPage(ref, store, page);
+            PartyHud hud = new PartyHud(playerRef, partyService);
+            player.getHudManager().setCustomHud(playerRef, hud);
+            //TODO update HUD when player is added/removed from the party.
         }
+        //        PartyPage page = new PartyPage(playerRef, partyService);
+        //        if (player != null) {
+        //            player.getPageManager().openCustomPage(ref, store, page);
+        //        }
     }
 }

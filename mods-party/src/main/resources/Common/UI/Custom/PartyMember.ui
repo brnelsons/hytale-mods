@@ -1,0 +1,16 @@
+Group {
+  LayoutMode: Left;
+  Padding: (Full: 10);
+  Label #Leader {
+    Text: "Leader";
+    Anchor: (Height: 20);
+    Style: (FontSize: 12, TextColor: #ffff00, Alignment: Center);
+    Visible: false;
+  }
+  Label #Name {
+    Text: "Member";
+    Anchor: (Height: 20);
+    Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
+    Visible: false;
+  }
+}
