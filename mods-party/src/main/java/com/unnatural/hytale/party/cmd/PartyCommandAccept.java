@@ -3,17 +3,14 @@ package com.unnatural.hytale.party.cmd;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
-import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncPlayerCommand;
+import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.unnatural.hytale.common.util.Messages;
-import com.unnatural.hytale.party.plugin.PartyService;
+import com.unnatural.hytale.party.service.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
-import java.util.concurrent.CompletableFuture;
-
-public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
+public class PartyCommandAccept extends AbstractPlayerCommand {
 
     private final PartyService partyService;
 
@@ -27,23 +24,12 @@ public class PartyCommandAccept extends AbstractAsyncPlayerCommand {
         return false;
     }
 
-    @NonNullDecl
     @Override
-    protected CompletableFuture<Void> executeAsync(@NonNullDecl CommandContext commandContext,
-                                                   @NonNullDecl Store<EntityStore> store,
-                                                   @NonNullDecl Ref<EntityStore> ref,
-                                                   @NonNullDecl PlayerRef playerRef,
-                                                   @NonNullDecl World world) {
-        return CompletableFuture.runAsync(() -> {
-            if (!partyService.hasInvite(playerRef)) {
-                playerRef.sendMessage(Messages.warning("no party invite available"));
-            } else {
-                partyService.acceptInvite(playerRef);
-                playerRef.sendMessage(Messages.important("joined party"));
-                partyService.getPartyMembersFor(playerRef)
-                        .forEach(playerInParty -> playerInParty.sendMessage(Messages.important(playerRef.getUsername() + " has joined the party: ")));
-            }
-
-        }, world);
+    protected void execute(@NonNullDecl CommandContext commandContext,
+                           @NonNullDecl Store<EntityStore> store,
+                           @NonNullDecl Ref<EntityStore> ref,
+                           @NonNullDecl PlayerRef playerRef,
+                           @NonNullDecl World world) {
+        partyService.acceptInvite(playerRef);
     }
 }

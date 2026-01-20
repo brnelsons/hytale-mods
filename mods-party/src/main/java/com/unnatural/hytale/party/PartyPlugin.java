@@ -1,11 +1,11 @@
 package com.unnatural.hytale.party;
 
+import com.hypixel.hytale.server.core.event.events.player.PlayerDisconnectEvent;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import com.unnatural.hytale.common.storage.InMemoryStore;
 import com.unnatural.hytale.party.cmd.PartyCommand;
-import com.unnatural.hytale.party.plugin.PartyService;
-import com.unnatural.hytale.party.plugin.PartyServiceImpl;
+import com.unnatural.hytale.party.service.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
 @SuppressWarnings("unused")
@@ -25,9 +25,11 @@ public class PartyPlugin extends JavaPlugin {
     @Override
     protected void start0() {
         //        super.start0();
-        PartyService partyService = new PartyServiceImpl(InMemoryStore.create());
+        PartyService partyService = new PartyService(InMemoryStore.create());
         getCommandRegistry().registerCommand(new PartyCommand(partyService));
-        // TODO register when a player disconnects or connects to manage the party. otherwise there will be memory leaks.
+        getEventRegistry().register(PlayerDisconnectEvent.class, playerDisconnectEvent -> {
+            partyService.leave(playerDisconnectEvent.getPlayerRef());
+        });
     }
 
 

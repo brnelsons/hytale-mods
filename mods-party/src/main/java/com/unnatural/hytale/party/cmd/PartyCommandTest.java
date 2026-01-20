@@ -3,18 +3,15 @@ package com.unnatural.hytale.party.cmd;
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
-import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncPlayerCommand;
+import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.unnatural.hytale.party.model.Party;
-import com.unnatural.hytale.party.plugin.PartyService;
-import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
+import com.unnatural.hytale.party.service.PartyService;
+import org.jspecify.annotations.NonNull;
 
-import java.util.HashSet;
-import java.util.concurrent.CompletableFuture;
-
-public class PartyCommandTest extends AbstractAsyncPlayerCommand {
+public class PartyCommandTest extends AbstractPlayerCommand {
 
     private final PartyService partyService;
 
@@ -28,17 +25,12 @@ public class PartyCommandTest extends AbstractAsyncPlayerCommand {
         return false;
     }
 
-    @NonNullDecl
     @Override
-    protected CompletableFuture<Void> executeAsync(@NonNullDecl CommandContext commandContext,
-                                                   @NonNullDecl Store<EntityStore> store,
-                                                   @NonNullDecl Ref<EntityStore> ref,
-                                                   @NonNullDecl PlayerRef playerRef,
-                                                   @NonNullDecl World world) {
-        return CompletableFuture.runAsync(() -> {
-            HashSet<PlayerRef> members = new HashSet<>(1);
-            members.add(playerRef);
-            partyService.createParty(new Party(playerRef, members));
-        }, world);
+    protected void execute(@NonNull CommandContext var1,
+                           @NonNull Store<EntityStore> var2,
+                           @NonNull Ref<EntityStore> var3,
+                           @NonNull PlayerRef playerRef,
+                           @NonNull World var5) {
+        partyService.createParty(Party.create(playerRef));
     }
 }

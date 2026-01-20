@@ -1,3 +1,6 @@
+import groovy.json.JsonOutput
+import groovy.json.JsonSlurper
+
 plugins {
     id 'java'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.3'
@@ -70,9 +73,9 @@ subprojects {
 
     jar {
         destinationDirectory = rootProject.layout.buildDirectory.dir("dist")
-        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-
-        from("src/main/resources")
+//        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//
+//        from("src/main/resources")
     }
 
     java {
@@ -89,8 +92,10 @@ subprojects {
         // Hytale server dependency -- not available in public repository yet.
         implementation(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
 
-        compileOnly "org.projectlombok:lombok:1.18.42"
-        annotationProcessor "org.projectlombok:lombok:1.18.42"
+        compileOnly("org.projectlombok:lombok:1.18.42")
+        annotationProcessor("org.projectlombok:lombok:1.18.42")
+
+        implementation("com.google.guava:guava:33.5.0-jre")
     }
 
     // Updates the manifest.json file with the latest properties defined in the
@@ -103,10 +108,10 @@ subprojects {
                 logger.info("Could not find manifest.json at ${manifestFile.path}!")
                 return
             }
-            def manifestJson = new groovy.json.JsonSlurper().parseText(manifestFile.text)
+            def manifestJson = new JsonSlurper().parseText(manifestFile.text)
             manifestJson.Version = version
             manifestJson.IncludesAssetPack = includes_pack.toBoolean()
-            manifestFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(manifestJson))
+            manifestFile.text = JsonOutput.prettyPrint(JsonOutput.toJson(manifestJson))
         }
     }
 

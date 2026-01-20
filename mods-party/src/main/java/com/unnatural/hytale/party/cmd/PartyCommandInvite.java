@@ -5,17 +5,14 @@ import com.hypixel.hytale.component.Store;
 import com.hypixel.hytale.server.core.command.system.CommandContext;
 import com.hypixel.hytale.server.core.command.system.arguments.system.RequiredArg;
 import com.hypixel.hytale.server.core.command.system.arguments.types.ArgTypes;
-import com.hypixel.hytale.server.core.command.system.basecommands.AbstractAsyncPlayerCommand;
+import com.hypixel.hytale.server.core.command.system.basecommands.AbstractPlayerCommand;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.unnatural.hytale.common.util.Messages;
-import com.unnatural.hytale.party.plugin.PartyService;
+import com.unnatural.hytale.party.service.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
-import java.util.concurrent.CompletableFuture;
-
-public class PartyCommandInvite extends AbstractAsyncPlayerCommand {
+public class PartyCommandInvite extends AbstractPlayerCommand {
 
     private final PartyService partyService;
     private final RequiredArg<String> targetPlayerArg;
@@ -31,35 +28,13 @@ public class PartyCommandInvite extends AbstractAsyncPlayerCommand {
         return false;
     }
 
-    @NonNullDecl
     @Override
-    protected CompletableFuture<Void> executeAsync(@NonNullDecl CommandContext commandContext,
-                                                   @NonNullDecl Store<EntityStore> store,
-                                                   @NonNullDecl Ref<EntityStore> ref,
-                                                   @NonNullDecl PlayerRef playerRef,
-                                                   @NonNullDecl World world) {
-
-        return CompletableFuture.runAsync(() -> {
-            final String sourcePlayer = playerRef.getUsername();
-            final String targetPlayer = this.targetPlayerArg.get(commandContext);
-            if (targetPlayer.equalsIgnoreCase(sourcePlayer)) {
-                playerRef.sendMessage(Messages.warning("cannot create party with yourself"));
-                return;
-            }
-            world.getPlayerRefs()
-                    .stream()
-                    .filter(player -> player.getUsername().equalsIgnoreCase(targetPlayer))
-                    .findFirst()
-                    .ifPresentOrElse(target -> {
-                        // TODO target player has pending invite
-                        if (partyService.isInParty(target)) {
-                            target.sendMessage(Messages.warning("player is in another party"));
-                        } else {
-                            partyService.createInvite(playerRef, target);
-                            target.sendMessage(Messages.important("Party invite from " + sourcePlayer));
-                            playerRef.sendMessage(Messages.important("Sent invite to " + targetPlayer));
-                        }
-                    }, () -> playerRef.sendMessage(Messages.error("player not found: " + targetPlayer)));
-        }, world);
+    protected void execute(@NonNullDecl CommandContext commandContext,
+                           @NonNullDecl Store<EntityStore> store,
+                           @NonNullDecl Ref<EntityStore> ref,
+                           @NonNullDecl PlayerRef playerRef,
+                           @NonNullDecl World world) {
+        final String targetPlayer = this.targetPlayerArg.get(commandContext);
+        partyService.createInvite(playerRef, targetPlayer);
     }
 }

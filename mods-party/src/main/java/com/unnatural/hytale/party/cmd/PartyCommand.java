@@ -9,7 +9,7 @@ import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.unnatural.hytale.party.hud.PartyPage;
-import com.unnatural.hytale.party.plugin.PartyService;
+import com.unnatural.hytale.party.service.PartyService;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 
 public class PartyCommand extends AbstractPlayerCommand {

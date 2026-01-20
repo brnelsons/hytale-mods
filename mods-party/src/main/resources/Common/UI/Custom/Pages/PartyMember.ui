@@ -9,7 +9,7 @@ Group {
     Visible: false;
   }
   Label #Name {
-    Text: "Party Member";
+    Text: "Member";
     Anchor: (Height: 40);
     Style: (FontSize: 16, TextColor: #ffffff, Alignment: Center);
     Visible: false;
