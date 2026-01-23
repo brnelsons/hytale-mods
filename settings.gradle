@@ -1,8 +1,6 @@
 rootProject.name = "HytaleMods"
 
-include ":code-gen"
-project(":code-gen").projectDir = new File("./code-gen")
-include ":common"
-project(":common").projectDir = new File("./mods-common")
-include ":party"
-project(":party").projectDir = new File("./mods-party")
+include ":unnatural-common"
+project(":unnatural-common").projectDir = new File("./mods-common")
+include ":unnatural-party"
+project(":unnatural-party").projectDir = new File("./mods-party")

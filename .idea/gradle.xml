@@ -8,7 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/code-gen" />
             <option value="$PROJECT_DIR$/mods-common" />
             <option value="$PROJECT_DIR$/mods-party" />
           </set>

@@ -1,6 +1,8 @@
+import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+
 plugins {
     id 'java'
-    id 'com.gradleup.shadow' version '8.3.9'
+    id 'com.gradleup.shadow' version '9.3.0+'
 }
 
 // Adds the Hytale server as a build dependency, allowing you to reference and
@@ -10,10 +12,13 @@ dependencies {
     implementation 'com.google.guava:guava:33.5.0-jre'
 }
 
-tasks.shadowJar() {
-//    archiveClassifier.set('')
-    destinationDirectory.set(file("$rootDir/build/dist/"))
-    exclude("nimbusds", "github.luben.zstd.*")
+tasks.named('shadowJar', ShadowJar) {
+    include("com/unnatural/**/*")
+    include("com/google/common/**/*")
+//    enableAutoRelocation = true
+//    relocationPrefix = "com/undeps"
+    destinationDirectory = file("$rootDir/build/dist/")
+    configurations = project.configurations.named('runtimeClasspath').map { [it] }
 }
 
 jar.dependsOn("shadowJar")

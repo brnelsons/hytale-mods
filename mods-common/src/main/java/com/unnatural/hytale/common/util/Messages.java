@@ -1,10 +1,14 @@
 package com.unnatural.hytale.common.util;
 
+import com.google.common.collect.Sets;
 import com.hypixel.hytale.server.core.Message;
 
 import java.awt.Color;
+import java.util.Set;
 
 public final class Messages {
+
+    private static final Set<String> TEST = Sets.newHashSet();
 
     private Messages() {
         // no-op
