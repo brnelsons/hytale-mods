@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="HytaleServer (Party)" type="Application" factoryName="Application">
+  <configuration default="false" name="HytaleServer-party" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="com.hypixel.hytale.Main" />
     <module name="HytaleMods.party.main" />
     <option name="PROGRAM_PARAMETERS" value="--allow-op --disable-sentry --assets=&quot;C:\Users\brnel/AppData/Roaming/Hytale/install/release/package/game/latest/Assets.zip&quot; --mods=&quot;C:\Users\brnel\dev\hytale-mods\mods-party\src\main&quot;" />

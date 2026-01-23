@@ -16,8 +16,9 @@ dependencies {
 tasks.named('shadowJar', ShadowJar) {
     include("com/unnatural/**/*")
     include("com/google/common/**/*")
-//    enableAutoRelocation = true
-//    relocationPrefix = "com/undeps"
+    include("**/manifest.json")
+    include("**/Common/UI/Custom/**/*")
+    from(sourceSets.main.resources)
     destinationDirectory = file("$rootDir/build/dist/")
     configurations = project.configurations.named('runtimeClasspath').map { [it] }
 }

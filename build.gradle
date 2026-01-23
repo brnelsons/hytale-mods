@@ -60,10 +60,10 @@ def createServerRunArguments(String srcDir) {
     return programParameters
 }
 
-//dependencies {
-//    // Hytale server dependency -- not available in public repository yet.
-//    compileOnly(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
-//}
+dependencies {
+    // Hytale server dependency -- not available in public repository yet.
+    implementation(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
+}
 
 subprojects {
     apply plugin: 'java'
@@ -97,7 +97,7 @@ subprojects {
 
     dependencies {
         // Hytale server dependency -- not available in public repository yet.
-        compileOnly(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
+        implementation(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
 
         compileOnly("org.projectlombok:lombok:1.18.42")
         annotationProcessor("org.projectlombok:lombok:1.18.42")
