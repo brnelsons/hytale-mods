@@ -60,11 +60,17 @@ def createServerRunArguments(String srcDir) {
     return programParameters
 }
 
+//dependencies {
+//    // Hytale server dependency -- not available in public repository yet.
+//    compileOnly(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
+//}
+
 subprojects {
     apply plugin: 'java'
 
     repositories {
         mavenCentral()
+        gradlePluginPortal()
     }
 
     ext {
@@ -73,9 +79,9 @@ subprojects {
 
     jar {
         destinationDirectory = rootProject.layout.buildDirectory.dir("dist")
-//        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-//
-//        from("src/main/resources")
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+        from("src/main/resources")
     }
 
     java {

@@ -1,3 +1,5 @@
+@ImgArrow = PatchStyle(TexturePath: "CustomArrow.png");
+
 Group {
   LayoutMode: Left;
   Padding: (Full: 10);
@@ -12,5 +14,21 @@ Group {
     Anchor: (Height: 20);
     Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
     Visible: false;
+  }
+  Label #Health {
+    Text: "100";
+    Anchor: (Height: 20);
+    Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
+    Visible: true;
+  }
+  Label #Direction {
+    Text: "⬆";
+    Anchor: (Height: 20);
+    Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
+    Visible: true;
+  }
+  Group #Image {
+    Anchor: (Height: 20, Width: 20);
+    Background: @ImgArrow;
   }
 }

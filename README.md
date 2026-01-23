@@ -4,3 +4,8 @@
 
 * https://hytalemodding.dev/
 * https://hytale-docs.pages.dev/
+
+# Components
+
+* Player
+    * EntityStatMap

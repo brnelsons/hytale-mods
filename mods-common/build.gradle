@@ -1,10 +1,19 @@
 plugins {
     id 'java'
+    id 'com.gradleup.shadow' version '8.3.9'
 }
 
 // Adds the Hytale server as a build dependency, allowing you to reference and
 // compile against their code. This requires you to have Hytale installed using
 // the official launcher for now.
 dependencies {
-    // no op
+    implementation 'com.google.guava:guava:33.5.0-jre'
 }
+
+tasks.shadowJar() {
+//    archiveClassifier.set('')
+    destinationDirectory.set(file("$rootDir/build/dist/"))
+    exclude("nimbusds", "github.luben.zstd.*")
+}
+
+jar.dependsOn("shadowJar")

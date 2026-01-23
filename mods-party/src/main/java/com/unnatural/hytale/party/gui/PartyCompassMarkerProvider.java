@@ -1,5 +1,6 @@
 package com.unnatural.hytale.party.gui;
 
+import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.math.vector.Transform;
 import com.hypixel.hytale.protocol.packets.worldmap.MapMarker;
 import com.hypixel.hytale.server.core.asset.type.gameplay.GameplayConfig;
@@ -13,6 +14,7 @@ import com.unnatural.hytale.party.service.PartyService;
 
 public class PartyCompassMarkerProvider implements WorldMapManager.MarkerProvider {
 
+    private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     private final PartyService partyService;
 
     public PartyCompassMarkerProvider(PartyService partyService) {
@@ -28,7 +30,18 @@ public class PartyCompassMarkerProvider implements WorldMapManager.MarkerProvide
                        int chunkY) {
         // TODO how to get playerRef another way?
         //noinspection removal
-        partyService.findParty(tracker.getPlayer().getPlayerRef()).ifPresent(party -> {
+        PlayerRef playerRef = tracker.getPlayer().getPlayerRef();
+        Transform pTransform = playerRef.getTransform();
+        pTransform.setPosition(pTransform.getPosition().add(10, 10, 10));
+        MapMarker m = new MapMarker(
+                playerRef.getUuid().toString(),
+                "test",
+                "Common/UI/Custom/CustomArrow.png",
+                PositionUtil.toTransformPacket(pTransform),
+                null
+        );
+        tracker.trySendMarker(-1, chunkX, chunkY, m);
+        partyService.findParty(playerRef).ifPresent(party -> {
             party.getMembers().forEach(memberUuid -> {
                 PlayerRef memberRef = Universe.get().getPlayer(memberUuid);
                 if (memberRef == null) return;
@@ -36,6 +49,7 @@ public class PartyCompassMarkerProvider implements WorldMapManager.MarkerProvide
                 Transform transform = memberRef.getTransform();
                 String username = memberRef.getUsername();
                 String markerUuid = memberRef.getUuid().toString();
+                transform.setPosition(transform.getPosition().add(10, 10, 10));
                 MapMarker marker = new MapMarker(
                         markerUuid,
                         username,
