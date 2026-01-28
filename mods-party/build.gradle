@@ -10,14 +10,15 @@ plugins {
 // the official launcher for now.
 dependencies {
 //    implementation(project(":generation"))
-    implementation(project(":unnatural-common"))
+//    implementation(project(":unnatural-common"))
+    implementation 'com.google.guava:guava:33.5.0-jre'
 }
 
 tasks.named('shadowJar', ShadowJar) {
     include("com/unnatural/**/*")
     include("com/google/common/**/*")
-    include("**/manifest.json")
-    include("**/Common/UI/Custom/**/*")
+    include("manifest.json")
+    include("Common/UI/Custom/**/*")
     from(sourceSets.main.resources)
     destinationDirectory = file("$rootDir/build/dist/")
     configurations = project.configurations.named('runtimeClasspath').map { [it] }

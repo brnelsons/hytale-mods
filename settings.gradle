@@ -1,6 +1,4 @@
 rootProject.name = "HytaleMods"
 
-include ":unnatural-common"
-project(":unnatural-common").projectDir = new File("./mods-common")
 include ":unnatural-party"
 project(":unnatural-party").projectDir = new File("./mods-party")

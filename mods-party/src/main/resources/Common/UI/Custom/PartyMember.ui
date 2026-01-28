@@ -1,4 +1,4 @@
-@ImgArrow = PatchStyle(TexturePath: "CustomArrow.png");
+//@ImgArrow = PatchStyle(TexturePath: "CustomArrow.png");
 
 Group {
   LayoutMode: Left;
@@ -22,13 +22,9 @@ Group {
     Visible: true;
   }
   Label #Direction {
-    Text: "⬆";
+    Text: "^";
     Anchor: (Height: 20);
     Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
     Visible: true;
-  }
-  Group #Image {
-    Anchor: (Height: 20, Width: 20);
-    Background: @ImgArrow;
   }
 }

@@ -5,14 +5,13 @@
     }
   ],
   "Dependencies": {
-    "Hytale:EntityModule": "*",
-    "Unnatural:Common": "*"
+    "Hytale:EntityModule": "*"
   },
   "Description": "Unnaturals Party Plugin",
   "DisabledByDefault": false,
   "Group": "Unnatural",
   "IncludesAssetPack": true,
-  "Main": "com.unnatural.hytale.party.PartyPlugin",
+  "Main": "com.unnatural.party.PartyPlugin",
   "Name": "Party",
   "ServerVersion": "*",
   "Version": "0.0.2"
