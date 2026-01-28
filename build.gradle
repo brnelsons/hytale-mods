@@ -4,6 +4,7 @@ import groovy.json.JsonSlurper
 plugins {
     id 'java'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.3'
+    id 'com.gradleup.shadow' version '9.3.0+'
 }
 
 ext {
@@ -25,9 +26,14 @@ ext {
 }
 
 if (!project.hasProperty('hytaleHome')) {
-    throw new GradleException('Your Hytale install could not be detected automatically. If you are on an unsupported platform or using a custom install location, please define the install location using the hytale_home property.');
+    throw new GradleException('Your Hytale install could not be detected automatically.' +
+            ' If you are on an unsupported platform or using a custom install location, ' +
+            'please define the install location using the hytale_home property.');
 } else if (!file(project.findProperty('hytaleHome')).exists()) {
-    throw new GradleException("Failed to find Hytale at the expected location. Please make sure you have installed the game. The expected location can be changed using the hytale_home property. Currently looking in ${project.findProperty('hytaleHome')}")
+    throw new GradleException("Failed to find Hytale at the expected location. " +
+            "Please make sure you have installed the game. " +
+            "The expected location can be changed using the hytale_home property. " +
+            "Currently looking in ${project.findProperty('hytaleHome')}")
 }
 
 // Create the working directory to run the server if it does not already exist.
@@ -67,10 +73,12 @@ dependencies {
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'com.gradleup.shadow'
 
     repositories {
         mavenCentral()
-        gradlePluginPortal()
+//        maven(url = "https://maven.hytale.com/release")
+//        maven(url = "https://maven.hytale.com/pre-release")
     }
 
     ext {
@@ -82,7 +90,6 @@ subprojects {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
         from("src/main/resources")
-
     }
 
     java {
@@ -97,7 +104,7 @@ subprojects {
 
     dependencies {
         // Hytale server dependency -- not available in public repository yet.
-        compileOnly(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
+        implementation(files("$hytaleHome/install/$patchline/package/game/latest/Server/HytaleServer.jar"))
 
         compileOnly("org.projectlombok:lombok:1.18.42")
         annotationProcessor("org.projectlombok:lombok:1.18.42")
@@ -122,18 +129,15 @@ subprojects {
         }
     }
 
-    // Makes sure the plugin manifest is up to date.
-//    tasks.named('processResources') {
-//        dependsOn 'updatePluginManifest'
-//    }
+    tasks.register('generateIdeaRunConfigs') {
+        idea.project.settings.runConfigurations {
+            "HytaleServer-${project.name}"(org.jetbrains.gradle.ext.Application) {
+                mainClass = 'com.hypixel.hytale.Main'
+                moduleName = "${project.idea.module.name}.${project.name}.main"
 
-    idea.project.settings.runConfigurations {
-        "HytaleServer-${project.name}"(org.jetbrains.gradle.ext.Application) {
-            mainClass = 'com.hypixel.hytale.Main'
-            moduleName = "${project.idea.module.name}.${project.name}.main" // change run configuration to asd
-
-            programParameters = createServerRunArguments(getProjectDir().absolutePath + File.separator + 'src' + File.separator + 'main')
-            workingDirectory = serverRunDir.absolutePath
+                programParameters = createServerRunArguments(getProjectDir().absolutePath + File.separator + 'src' + File.separator + 'main')
+                workingDirectory = serverRunDir.absolutePath
+            }
         }
     }
 }

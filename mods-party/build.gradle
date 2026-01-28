@@ -5,20 +5,11 @@ plugins {
     id 'com.gradleup.shadow' version '9.3.0+'
 }
 
-// Adds the Hytale server as a build dependency, allowing you to reference and
-// compile against their code. This requires you to have Hytale installed using
-// the official launcher for now.
-dependencies {
-//    implementation(project(":generation"))
-//    implementation(project(":unnatural-common"))
-    implementation 'com.google.guava:guava:33.5.0-jre'
-}
-
 tasks.named('shadowJar', ShadowJar) {
-    include("com/unnatural/**/*")
-    include("com/google/common/**/*")
-    include("manifest.json")
-    include("Common/UI/Custom/**/*")
+    include "com/unnatural/**/*",
+            "com/google/common/**/*",
+            "manifest.json",
+            "Common/UI/Custom/**/*"
     from(sourceSets.main.resources)
     destinationDirectory = file("$rootDir/build/dist/")
     configurations = project.configurations.named('runtimeClasspath').map { [it] }
