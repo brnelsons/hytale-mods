@@ -85,7 +85,7 @@ public class PartyHud extends CustomUIHud {
             PartyHudPlayerData data = PartyHudPlayerData.builder()
                     .username(member.getUsername())
                     .isLeader(member.getUuid().equals(leaderUuid))
-                    .healthPercent(currentHealth * 100 / maxHealth)
+                    .healthPercent((int) Math.round(currentHealth * 100d / maxHealth))
                     .direction(dir)
                     .build();
             playerHudData.add(data);
@@ -107,12 +107,11 @@ public class PartyHud extends CustomUIHud {
             cmd.set(selector + "#Name.Text", data.getUsername());
             cmd.set(selector + "#Name.Visible", true);
         }
-        cmd.set(selector + "#Health.Text", String.format("[%.0f]", data.getHealthPercent()));
         if (data.getDirection() != null) {
             cmd.set(selector + "#Direction.Text", data.getDirection().getCharacter());
         }
         Anchor a = new Anchor();
-        a.setWidth(Value.of(40));
+        a.setWidth(Value.of(data.getHealthPercent()));
         cmd.setObject(selector + "#HealthBar.Anchor", a);
     }
 

@@ -11,6 +11,6 @@ public class PartyHudPlayerData {
     private final UUID playerUuid;
     private boolean isLeader;
     private String username;
-    private float healthPercent;
+    private Integer healthPercent;
     private Direction direction;
 }

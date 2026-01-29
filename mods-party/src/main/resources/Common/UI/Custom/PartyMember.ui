@@ -20,12 +20,6 @@ Group {
       Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
       Visible: false;
     }
-    Label #Health {
-      Text: "100";
-      Anchor: (Height: 20);
-      Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
-      Visible: true;
-    }
     Label #Direction {
       Text: "^";
       Anchor: (Height: 20);
