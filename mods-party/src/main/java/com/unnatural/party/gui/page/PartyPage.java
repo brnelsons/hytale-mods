@@ -1,4 +1,4 @@
-package com.unnatural.party.hud;
+package com.unnatural.party.gui.page;
 
 import com.hypixel.hytale.protocol.packets.interface_.CustomPageLifetime;
 import com.hypixel.hytale.server.core.entity.entities.player.pages.BasicCustomUIPage;

@@ -8,7 +8,7 @@ import com.hypixel.hytale.server.core.entity.entities.Player;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import com.unnatural.party.hud.PartyHud;
+import com.unnatural.party.gui.PartyHud;
 import com.unnatural.party.model.Party;
 import com.unnatural.party.service.PartyService;
 import org.jspecify.annotations.NonNull;

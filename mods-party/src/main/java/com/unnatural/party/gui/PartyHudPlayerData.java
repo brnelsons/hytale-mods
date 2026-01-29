@@ -1,4 +1,4 @@
-package com.unnatural.party.hud;
+package com.unnatural.party.gui;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.unnatural.party.hud;
+package com.unnatural.party.gui;
 
 import com.hypixel.hytale.component.Ref;
 import com.hypixel.hytale.math.vector.Transform;
@@ -7,6 +7,8 @@ import com.hypixel.hytale.server.core.entity.entities.player.hud.CustomUIHud;
 import com.hypixel.hytale.server.core.modules.entitystats.EntityStatMap;
 import com.hypixel.hytale.server.core.modules.entitystats.EntityStatValue;
 import com.hypixel.hytale.server.core.modules.entitystats.asset.DefaultEntityStatTypes;
+import com.hypixel.hytale.server.core.ui.Anchor;
+import com.hypixel.hytale.server.core.ui.Value;
 import com.hypixel.hytale.server.core.ui.builder.UICommandBuilder;
 import com.hypixel.hytale.server.core.universe.PlayerRef;
 import com.hypixel.hytale.server.core.universe.Universe;
@@ -97,7 +99,7 @@ public class PartyHud extends CustomUIHud {
     private void updatePlayerData(UICommandBuilder cmd,
                                   PartyHudPlayerData data,
                                   int index) {
-        String selector = String.format("#PartyMembers[%d] ", index);
+        final String selector = String.format("#PartyMembers[%d] ", index);
         if (data.isLeader()) {
             cmd.set(selector + "#Leader.Text", data.getUsername());
             cmd.set(selector + "#Leader.Visible", true);
@@ -109,6 +111,9 @@ public class PartyHud extends CustomUIHud {
         if (data.getDirection() != null) {
             cmd.set(selector + "#Direction.Text", data.getDirection().getCharacter());
         }
+        Anchor a = new Anchor();
+        a.setWidth(Value.of(40));
+        cmd.setObject(selector + "#HealthBar.Anchor", a);
     }
 
     private Direction getDirectionToPlayer(Transform self,

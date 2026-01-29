@@ -1,4 +1,4 @@
-package com.unnatural.party.hud;
+package com.unnatural.party.gui;
 
 import com.hypixel.hytale.logger.HytaleLogger;
 import com.unnatural.party.service.PartyService;

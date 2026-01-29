@@ -1,30 +1,47 @@
 //@ImgArrow = PatchStyle(TexturePath: "CustomArrow.png");
+$Common = "Common.ui";
 
 Group {
-  LayoutMode: Left;
-  Padding: (Full: 10);
-  Label #Leader {
-    Text: "Leader";
-    Anchor: (Height: 20);
-    Style: (FontSize: 12, TextColor: #ffff00, Alignment: Center);
-    Visible: false;
+  LayoutMode: Top;
+  Anchor: (Left: 0, Height: 40, Width: 100);
+
+  Group {
+    LayoutMode: Left;
+
+    Label #Leader {
+      Text: "Leader";
+      Anchor: (Height: 20);
+      Style: (FontSize: 12, TextColor: #ffff00, Alignment: Center);
+      Visible: false;
+    }
+    Label #Name {
+      Text: "Member";
+      Anchor: (Height: 20);
+      Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
+      Visible: false;
+    }
+    Label #Health {
+      Text: "100";
+      Anchor: (Height: 20);
+      Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
+      Visible: true;
+    }
+    Label #Direction {
+      Text: "^";
+      Anchor: (Height: 20);
+      Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
+      Visible: true;
+    }
   }
-  Label #Name {
-    Text: "Member";
-    Anchor: (Height: 20);
-    Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
-    Visible: false;
-  }
-  Label #Health {
-    Text: "100";
-    Anchor: (Height: 20);
-    Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
-    Visible: true;
-  }
-  Label #Direction {
-    Text: "^";
-    Anchor: (Height: 20);
-    Style: (FontSize: 12, TextColor: #ffffff, Alignment: Center);
-    Visible: true;
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Height: 10, Width: 100);
+    Background: #430000;
+
+    Group #HealthBar {
+      Background: #ff0000;
+      Anchor: (Height: 10, Width: 40);
+    }
   }
 }
