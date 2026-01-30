@@ -15,6 +15,7 @@ import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
 import com.unnatural.common.storage.InMemoryStore;
 import com.unnatural.party.cmd.PartyCommand;
 import com.unnatural.party.service.PartyService;
+import com.unnatural.party.system.DamageTakenSystem;
 import org.checkerframework.checker.nullness.compatqual.NonNullDecl;
 import org.jspecify.annotations.NonNull;
 
@@ -38,9 +39,11 @@ public class PartyPlugin extends JavaPlugin {
         //        super.start0();
         PartyService partyService = new PartyService(InMemoryStore.create());
         getCommandRegistry().registerCommand(new PartyCommand(partyService));
+        getEntityStoreRegistry().registerSystem(new DamageTakenSystem(partyService));
         getEventRegistry().register(PlayerDisconnectEvent.class, playerDisconnectEvent -> {
             partyService.leave(playerDisconnectEvent.getPlayerRef());
         });
+        //        getEventRegistry().registerGlobal(PartyMemberHealthChangeEvent.class, event -> LOGGER.atInfo().log("health changed"));
         getEventRegistry().registerGlobal(AddWorldEvent.class, event -> onAddWorld(event, partyService));
         //        getEventRegistry().registerGlobal(PlayerReadyEvent.class, event -> onPlayerReady(event));
     }

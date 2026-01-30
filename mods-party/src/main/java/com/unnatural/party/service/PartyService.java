@@ -94,13 +94,17 @@ public class PartyService {
                 .findFirst();
     }
 
+    public Optional<Party> getPartyFor(UUID playerUuid) {
+        return store.values().filter(party -> party.hasPlayer(playerUuid))
+                .findFirst();
+    }
+
     public Stream<UUID> getPartyMembersFor(PlayerRef playerRef) {
         return getPartyMembersFor(playerRef.getUuid());
     }
 
     public Stream<UUID> getPartyMembersFor(UUID playerUuid) {
-        return store.values().filter(party -> party.hasPlayer(playerUuid))
-                .findFirst()
+        return getPartyFor(playerUuid)
                 .map(Party::getMembers)
                 .orElseGet(Collections::emptyList)
                 .stream();

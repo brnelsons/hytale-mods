@@ -1,6 +1,7 @@
 package com.unnatural.party.gui;
 
 import com.hypixel.hytale.component.Ref;
+import com.hypixel.hytale.logger.HytaleLogger;
 import com.hypixel.hytale.math.vector.Transform;
 import com.hypixel.hytale.math.vector.Vector3d;
 import com.hypixel.hytale.server.core.entity.entities.player.hud.CustomUIHud;
@@ -29,6 +30,7 @@ import java.util.UUID;
  * {@link com.hypixel.hytale.server.core.ui.DropdownEntryInfo}
  */
 public class PartyHud extends CustomUIHud {
+    private static final HytaleLogger LOGGER = HytaleLogger.forEnclosingClass();
     private static final String DOCUMENT_REF = "PartyHud.ui";
     private static final String MEMBER_REF = "PartyMember.ui";
 
@@ -57,7 +59,7 @@ public class PartyHud extends CustomUIHud {
 
     @Override
     public void update(boolean clear, @NonNull UICommandBuilder cmd) {
-        super.update(clear, cmd);
+        LOGGER.atInfo().log("updating hud");
         partyService.findParty(getPlayerRef()).ifPresent(party -> {
             List<PlayerRef> partyMembers = party.getMembers().stream()
                     // TODO should this get all players and access the map non-concurrently?
@@ -66,6 +68,7 @@ public class PartyHud extends CustomUIHud {
                     .toList();
             setPartyMembers(cmd, party.getLeader(), partyMembers);
         });
+        super.update(clear, cmd);
     }
 
     private void setPartyMembers(UICommandBuilder cmd, UUID leaderUuid, List<PlayerRef> members) {
